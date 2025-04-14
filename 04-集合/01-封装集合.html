@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=·11111, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /*
+      集合有哪些常见的操作方法呢？
+        口 add(value)：向集合添加一个新的项.
+        口 remove(value)：从集合移除一个值.
+        口 has(value)：如果值在集合中，返回true，否则返回false.
+        口 clear()：移除集合中的所有项.
+        口 size()：返回集合所包含元素的数量。与数组的length属性类似。
+        口 values()：返回一个包含集合所有值的数组.
+        口还有一些集合其他相关的操作，暂时用不太多，这里暂不封装.
+    */
+      function Set() {
+        //1.属性
+        this.items = {};
+
+        //2.方法
+        //1.add方法
+        Set.prototype.add = function (value) {
+          //1.判断当前集合中是否包含了该元素
+          if (this.has(value)) {
+            //包含不能重复添加
+            return false;
+          }
+
+          //2.将元素添加到集合中
+          this.items[value] = value;
+          return true;
+        };
+
+        //2.remove方法
+        Set.prototype.remove = function (value) {
+          //判断当前集合中是否包含了该元素
+          //1.判断当前集合中是否包含了该元素
+          if (!this.has(value)) {
+            return false;
+          }
+
+          //2.将元素从集合中删除
+          delete this.items[value];
+          return true;
+        };
+
+        //3.has方法
+        Set.prototype.has = function (value) {
+          //判断当前集合中是否包含了该元素
+          //hasOwnProperty和in的区别，in无法区分自身和原型链上的属性，hasOwnProperty适用于只判断自身属性的场景(无法判断原型链上的属性).
+          return this.items.hasOwnProperty(value);
+        };
+
+        //4.clear方法
+        Set.prototype.clear = function () {
+          this.items = {};
+          return true;
+        };
+
+        //5.size方法
+        Set.prototype.size = function () {
+          return Object.keys(this.items).length;
+        };
+
+        //6.values方法
+        Set.prototype.values = function () {
+          return Object.keys(this.items);
+        };
+
+        //集合间的操作
+        //并集
+        Set.prototype.union = function (otherSet) {
+          // this:集合A
+          // otherSet:集合B
+          //1.创建新的集合
+          const unionSet = new Set();
+          //2.将集合A中所有元素添加到新集合中
+          let values = this.values();
+          for (let i = 0; i < values.length; i++) {
+            unionSet.add(values[i]);
+          }
+          //3.取出B集合中的元素，判断是否需要加到新集合
+          values = otherSet.values();
+          for (let i = 0; i < values.length; i++) {
+            unionSet.add(values[i]); //add中如果已存在元素不会添加
+          }
+          return unionSet;
+        };
+
+        //交集
+        Set.prototype.intersection = function (otherSet) {
+          //1.创建新的集合
+          const intersectionSet = new Set();
+          //2.从A中取出各个元素，判断是否同时存在于集合B中，存在则放入新集合
+          const values = this.values();
+          for (let i = 0; i < values.length; i++) {
+            const element = values[i];
+            if (otherSet.has(element)) {
+              intersectionSet.add(element);
+            }
+          }
+          return intersectionSet;
+        };
+
+        //差集
+        Set.prototype.difference = function (otherSet) {
+          //1.创建新的集合
+          const differenceSet = new Set();
+          //2.取出集合A中每个元素，判断是否同时存在于集合B中，不存在则添加到新集合中
+          for (let i = 0; i < values.length; i++) {
+            const element = values[i];
+            if (!otherSet.has(element)) {
+              differenceSet.add(element);
+            }
+          }
+          return differenceSet;
+        };
+
+        //子集
+        Set.prototype.subSet = function (otherSet) {
+          //遍历集合A中所有的元素，如果集合A中的元素，在集合B中不存在，返回false
+          const values = this.values();
+          for (let i = 0; i < values.length; i++) {
+            const element = values[i];
+            if (!otherSet.has(element)) {
+              return false;
+            }
+          }
+          return true;
+        };
+      }
+
+      //测试set类
+      const set = new Set();
+      //1.添加元素
+      console.log(set.add("aaa"));
+      console.log(set.add("aaa"));
+      console.log(set.add("bbb"));
+      console.log(set.add("ccc"));
+      console.log(set.values());
+    </script>
+  </body>
+</html>

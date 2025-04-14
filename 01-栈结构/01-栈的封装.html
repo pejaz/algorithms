@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //Method(方法):对象中的函数称为方法，和某一个对象实例有联系，
+      //Funtino(函数):在js中是Windows对象的方法
+      //封装栈类
+      function Stack() {
+        //栈中的属性
+        this.items = [];
+
+        //栈的相关操作
+        /*
+         * 1. push(element): 添加一个新元素到栈顶位置
+         * 2. pop(): 移除栈顶的元素，同时返回被移出的元素
+         * 3. peek(): 返回栈顶的元素，不对栈做任何修改(这个方法不会移除栈顶的元素，仅仅是返回它)
+         * 4. isEmpty(): 如果栈里没有任何元素就返回true，否则返回false
+         * 5. size(): 返回栈里的元素个数，这个方法和数组的length属性很类似
+         * 6. toString(): 将栈结构的内容以字符形式返回
+         */
+
+        //1. push()
+        //第一种方式，给每一个对象实例创建一个push方法
+        // this.push = function(){}
+        //在js中使用第二种方式，在原型上创建，所有对象示例共享该方法，更省内存
+        Stack.prototype.push = function (element) {
+          return this.items.push(element);
+        };
+        //2. pop()
+        Stack.prototype.pop = function () {
+          return this.items.pop();
+        };
+        //3. peek()
+        Stack.prototype.peek = function () {
+          return this.items[this.items.length - 1];
+        };
+        //4. isEmpty()
+        Stack.prototype.isEmpty = function () {
+          return this.items.length === 0;
+        };
+        //5. size()
+        Stack.prototype.size = function () {
+          return this.items.length;
+        };
+        //6. toString()
+        Stack.prototype.toString = function () {
+          return this.items.join(" ");
+        };
+      }
+      //栈的使用
+      const s = new Stack();
+      s.push(20);
+      s.push(10);
+      s.push(70);
+      s.push(100);
+      s.push(5);
+      // alert(s.toString())
+
+      s.pop();
+      s.pop();
+      // alert(s)
+
+      //十进制转换二进制
+      const dec2bin = (decNumber) => {
+        // 1.定义一个栈对象
+        const stack = new Stack();
+        //2.循环操作
+        while (decNumber > 0) {
+          //2.1 获取余数，并且放入栈中
+          stack.push(decNumber % 2);
+          //2.2 获取整除后的结果，作为下一次运行的数值
+          decNumber = Math.floor(decNumber / 2);
+        }
+        //从栈中取出
+        let binaryString = "";
+        while (!stack.isEmpty()) {
+          binaryString += stack.pop();
+        }
+        return binaryString;
+      };
+      //测试10进制=>2进制
+      console.log(dec2bin(100));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "leetcode.defaultLanguage": "rust",
+  "leetcode.workspaceFolder": "/Users/peigoz/Zhong/algorithms/leet-code-rs",
+  "leetcode.filePath": {
+    "default": {
+      "folder": "src/solutions",
+      "filename": "${id}.${kebab-case-name}.${ext}"
+    }
+  },
+}

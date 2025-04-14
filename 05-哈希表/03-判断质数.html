@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //判断是否是质数的函数
+      function isPrime(num) {
+        for (let index = 2; index < num; index++) {
+          if (num % index == 0) {
+            return false;
+          }
+        }
+        return ture;
+      }
+
+      //优化判断质数函数
+      /*
+        对于每个数n,其实并不需要从2判断到n-1
+        一个数若可以进行因数分解,那么分解时得到的两个数一定是一个小于等于sqrt(n),一个大于等于sqrt(m)
+        比如16可以被分别,那么是2*8,2小于sqrt(16),也就是4, 8大于4.而4*4都是等于sqrt(n)
+        所以其实我们遍历到等于sqrt(n)即可
+      */
+      function isPrimeNew(num) {
+        //1.获取num的平方根
+        const temp = parseInt(Math.sqrt(num));
+        for (let index = 2; index <= temp; index++) {
+          if (num % index == 0) {
+            return false;
+          }
+        }
+        return ture;
+      }
+    </script>
+  </body>
+</html>

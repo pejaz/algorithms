@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /*
+        链表的每个元素由一个存储元素本身的节点和一个指向下一个元素的引用（有些语言称为指针或者连接）组成.
+        相对于数组，链表有一些优点：
+          内存空间不是必须连续的，可以充分利用计算机的内存，实现灵活的内存动态管理.
+          链表不必在创建时就确定大小，并且大小可以无限的延伸下去.
+          链表在插入和删除数据时，时间复杂度可以达到O(1).相对数组效率高很多.
+        相对于数组，链表有一些缺点：
+          链表访问任何一个位置的元素时，都需要从头开始访问（无法跳过第一个元素访问任何一个元素）.
+          无法通过下标直接访问元素，需要从头一个个访问，直到找到对应的元素.
+
+        链表的常见操作
+          口 append(element)：向列表尾部添加一个新的项
+          口 insert(position，element)：向列表的特定位置插入一个新的项。
+          口 get(position)：获取对应位置的元素
+          口 indexOf(element)：返回元素在列表中的索引。如果列表中没有该元素则返回-1.
+          口 update(position,element)：修改某个位置的元素
+          口 removeAt(position)：从列表的特定位置移除一项。
+          口 remove(element)：从列表中移除一项。
+          口 isEmpty()：如果链表中不包含任何元素，返回true，如果链表长度大于0则返回false
+          口 size()：返回链表包含的元素个数。与数组的length属性类似
+          口 toString()：由于列表项使用了Node类，就需要重写继承自JavaScript对象默认的toString方法，让其只输出元素的值
+      */
+      //封装链表
+      function LinkedList() {
+        //内部节点类
+        function Node(data) {
+          this.data = data;
+          this.next = null;
+        }
+        //属性
+        this.head = null;
+        this.length = 0;
+
+        //1.追加方法
+        LinkedList.prototype.append = function (data) {
+          //1. 创建新的节点
+          const newNode = new Node(data);
+          //2. 判断是否添加的是第一个节点
+          if (this.length == 0) {
+            this.head = newNode;
+          } else {
+            //找到最后一个节点
+            let current = this.head;
+            while (current.next) {
+              current = current.next;
+            }
+            current.next = newNode;
+          }
+          //3. length+1
+          this.length += 1;
+          return true;
+        };
+
+        //2. toString方法
+        LinkedList.prototype.toString = function () {
+          //1.定义变量
+          let current = this.head;
+          let listString = "";
+          //2.循环获取每一个节点
+          while (current) {
+            listString += current.data + " ";
+            current = current.next;
+          }
+          return listString;
+        };
+
+        //3. insert方法
+        LinkedList.prototype.insert = function (position, data) {
+          //1. 对position进行越界判断
+          if (position < 0 || position > this.length) {
+            return false;
+          }
+          //2. 根据data创建newNode
+          const newNode = new Node(data);
+
+          //3. 判断插入位置是否为第一个
+          let current = this.head;
+          if (position == 0) {
+            [newNode.next, this.head] = [current, newNode];
+          } else {
+            for (let i = 0; i < position - 1; i++) {
+              current = current.next;
+            }
+            // newNode.next = current.next
+            // current.next = newNode
+            [newNode.next, current.next] = [current.next, newNode];
+          }
+
+          //4. length+1
+          this.length += 1;
+          return true;
+        };
+
+        //4. get方法
+        LinkedList.prototype.get = function (position) {
+          //1. 越界判断
+          if (position < 0 || position >= this.length) {
+            return null;
+          }
+          //2. 获取数据
+          let current = this.head;
+          for (let index = 0; index < position; index++) {
+            current = current.next;
+          }
+          return current.data;
+        };
+
+        //5. indexOf方法
+        LinkedList.prototype.indexOf = function (data) {
+          let current = this.head;
+          for (let index = 0; index < this.length; index++) {
+            if (data == current.data) {
+              return index;
+            }
+            current = current.next;
+          }
+          return -1;
+        };
+
+        //6. update方法
+        LinkedList.prototype.update = function (position, data) {
+          //1. 越界判断
+          if (position < 0 || position >= this.length) {
+            return false;
+          }
+          //2. 获取数据
+          let current = this.head;
+          for (let index = 0; index < position; index++) {
+            current = current.next;
+          }
+          current.data = data;
+          return true;
+        };
+
+        //7. removeAt方法
+        LinkedList.prototype.removeAt = function (position) {
+          //1. 越界判断
+          if (position < 0 || position >= this.length) {
+            return null;
+          }
+          //2. 判断删除是否为第一个
+          let removeData
+          if (position == 0) {
+            removeData = this.head
+            this.head = this.head.next;
+          } else {
+            let current = this.head;
+            // for (let index = 0; index < position - 1; index++) {
+            //   current = current.next;
+            // }
+            // let removeData = current.next.data
+            // current.next = current.next.next;
+            let previous = null;
+            let index = 0;
+            while (index++ < position) {
+              previous = current;
+              current = current.next;
+            }
+            previous.next = current.next;
+            removeData = current
+          }
+          //3. length-1
+          this.length -= 1;
+          return removeData;
+        };
+
+        //8. remove方法
+        LinkedList.prototype.remove = function (data) {
+          //1. 获取data在列表中位置
+          const position = this.indexOf(data);
+          //2. 根据位置信息删除
+          const flag = this.removeAt(position) == -1 ? false : true;
+          if (flag) {
+            this.length -= 1;
+          }
+          return flag;
+        };
+
+        //9. isEmpty方法
+        LinkedList.prototype.isEmpty = function () {
+          return this.length === 0;
+        };
+
+        //10. size方法
+        LinkedList.prototype.size = function () {
+          return this.length;
+        };
+      }
+
+      //测试代码
+      const list = new LinkedList();
+
+      list.append("abc");
+      list.append("bcd");
+      list.append("cde");
+      list.append("eee");
+      list.insert(1, "aaa");
+      console.log(list.get(2));
+      console.log(list.indexOf("aaa"));
+      alert(list.toString());
+    </script>
+  </body>
+</html>

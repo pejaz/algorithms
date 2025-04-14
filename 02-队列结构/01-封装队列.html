@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // 封装队列
+      // 1. 数组封装
+      // 2. 链表封装
+      function Queue() {
+        //属性
+        this.items = [];
+
+        //队列的相关操作
+        /*
+         * 1. enqueue(element): 向队列尾部添加一个（或多个）新元素
+         * 2. dequeue(): 移除队列的第一（即排在队列最前面的）项，同时返回被移出的元素
+         * 3. front(): 返回队列第一个的元素，不对队列做任何修改(这个方法不会移除队列前端的元素，仅仅是返回它)
+         * 4. isEmpty(): 如果队列没有任何元素就返回true，否则返回false
+         * 5. size(): 返回队列的元素个数，这个方法和数组的length属性很类似
+         * 6. toString(): 将队列结构的内容以字符形式返回
+         */
+
+        // 方法
+        // 1. enqueue()
+        Queue.prototype.enqueue = function (element) {
+          this.items.push(element);
+        };
+        // 2. dequeue()
+        Queue.prototype.dequque = function () {
+          return this.items.shift();
+        };
+        // 3. front()
+        Queue.prototype.front = function () {
+          return this.items[0];
+        };
+        // 4. isEmpty()
+        Queue.prototype.isEmpty = function () {
+          return this.items.length === 0;
+        };
+        // 5. size()
+        Queue.prototype.size = function () {
+          return this.items.length;
+        };
+        //  6. toString()
+        Queue.prototype.toString = function () {
+          return this.items.join(" ");
+        };
+      }
+
+      // //使用队列
+      // const queue = new Queue();
+      // queue.enqueue('abc')
+      // queue.enqueue('def')
+      // queue.enqueue('fas')
+      // alert(queue)
+
+      // //从队列删除元素
+      // queue.dequque()
+
+      // //front()方法
+      // alert(queue.front())
+
+      // //验证其他方法
+      // alert(queue.isEmpty())
+      // alert(queue.size())
+
+      //面试题:击鼓传花
+      function passGame(nameList, num) {
+        //1. 创建一个队列结构
+        let queue = new Queue();
+        //2. 将所有人依次加入到队列中
+        for (let i = 0; i < nameList.length; i++) {
+          queue.enqueue(nameList[i]);
+        }
+        //3. 开始数数字，不是num重新加入队列，是num则出列
+        while (queue.size()>1) {
+          for (let i = 0; i < num - 1; i++) {
+            queue.enqueue(queue.dequeue());
+          }
+          queue.dequeue();
+        }
+        //4.获取剩下最后一个人的下标
+        let endName = queue.front()
+        return nameList.indexOf(endName)
+      }
+    </script>
+  </body>
+</html>

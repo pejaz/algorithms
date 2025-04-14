@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //封装哈希表类
+      function HashTable() {
+        //属性
+        this.storage = []
+        this.count = 0
+        this.limit = 7
+        //loadFactor加载因子 > 0.75 =>扩容
+        //loadFactor加载因子 < 0.25 =>压缩
+
+        //方法
+        HashTable.prototype.hashFunc = function (str, size) {
+          //1. 定义hashCode变量
+          let hashCode = 0
+          //2.秦九韶算法，来计算hashCode的值
+          //   a*n4 + b*n3 + c*n2 + d*n1 + e = ((((0*n+a)*n+b)n+c)n+d)n+e
+          // cats => Unicode编码,37为常用质数（31,37,41）
+          for (let i = 0; i < str.length; i++) {
+            hashCode = 37 * hashCode + str.charCodeAt(i)
+          }
+          //3. 取余操作
+          const index = hashCode % size
+          return index
+        }
+
+        //插入&修改操作
+        HashTable.prototype.put = function (key, value) {
+          //1.根据key获取对应的index
+          const index = this.hashFunc(key, this.limit)
+          //2.根据index取出对应的bucket
+          let bucket = this.storage[index]
+          //3.判断该bucket是否为空
+          if (bucket == null) {
+            bucket = []
+            this.storage[index] = bucket
+          }
+          //4.判断是否是修改数据
+          for (let i = 0; i < bucket.length; i++) {
+            let tuple = bucket[i]
+            if (tuple[0] == key) {
+              tuple[1] = value
+              return
+            }
+          }
+          //5.进行添加操作
+          bucket.push([key, value])
+          this.count += 1
+
+          //判断是否需要扩容操作
+          if (this.count > this.limit * 0.75) {
+            this.reSize(this.limit * 2)
+          }
+        }
+
+        //获取操作
+        HashTable.prototype.get = function (key) {
+          //1.根据key获取对应的index
+          const index = this.hashFunc(key, this.limit)
+          let bucket = this.storage[index]
+          //3.判断该bucket是否为空
+          if (bucket == null) {
+            return null
+          }
+          //4.线性查找bucket
+          for (let i = 0; i < bucket.length; i++) {
+            let tuple = bucket[i]
+            if (tuple[0] == key) {
+              return tuple[1]
+            }
+          }
+          return null
+        }
+
+        //删除操作
+        HashTable.prototype.remove = function (key) {
+          //1.根据key获取对应的index
+          const index = this.hashFunc(key, this.limit)
+          let bucket = this.storage[index]
+          //3.判断该bucket是否为空
+          if (bucket == null) {
+            return null
+          }
+          //4.线性查找bucket
+          for (let i = 0; i < bucket.length; i++) {
+            let tuple = bucket[i]
+            if (tuple[0] == key) {
+              bucket.splice(i, 1)
+              this.count -= 1
+
+              //压缩容量
+              if (this.limit > 7 && this.count < this.limit * 0.25) {
+                this.reSize((this.limit / 2) | 0)
+              }
+              return tuple[1]
+            }
+          }
+          return null
+        }
+
+        //其他方法
+        //判断哈希表是否为空
+        HashTable.prototype.isEmpty = function () {
+          return this.count == 0
+        }
+        //获取哈希表元素个数
+        HashTable.prototype.size = function () {
+          return this.count
+        }
+
+        //哈希表扩容
+        HashTable.prototype.reSize = function (newLimit) {
+          //1.保存旧的数组内容
+          const oldStorage = this.storage
+          //2. 重置所有的属性
+          this.storage = []
+          this.count = 0
+          this.limit = newLimit
+          //3. 遍历oldStorage中所有bucket
+          for (let i = 0; i < oldStorage.length; i++);
+          {
+            let bucket = oldStorage[i]
+            if (bucket == null) {
+              continue
+            }
+            for (let j = 0; j < bucket.length; j++);
+            {
+              const tuple = bucket[j]
+              this.put(tuple[0], tuple[1])
+            }
+          }
+        }
+      }
+
+      //测试哈希表
+      //1.创建哈希表
+      const ht = new HashTable()
+      //2.插入数据
+      ht.put('abc', '123')
+      ht.put('BBB', '223')
+      ht.put('ddd', '443')
+      ht.put('agc', '143')
+
+      //3.获取数据
+      console.log(ht.get('agc'))
+
+      //4.修改方法
+      ht.put('agc', '324')
+      console.log(ht.get('agc'))
+
+      //5.删除方法
+      console.log(ht.remove('BBB'))
+      console.log(ht.get('BBB'))
+    </script>
+  </body>
+</html>

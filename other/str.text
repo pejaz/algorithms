@@ -1,0 +1,53 @@
+1. 实现 strStr() 函数。
+给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从 0 开始)。如果不存在，则返回  -1。
+2. https://leetcode-cn.com/problems/implement-strstr/
+3. 
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+var strStr = function(haystack, needle) {
+    if(needle.length == 0 ){
+        return 0
+    }
+    for(let i = 0;i<=haystack.length-needle.length;i++){
+        let j = 0
+        for(j ; j<needle.length;j++){
+            if(haystack[i+j]!=needle[j]){
+                break
+            }
+        }
+        if(needle.length==j){
+            return i
+        }
+    }
+    return -1
+};
+
+1. 子集
+给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。
+解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。
+2. https://leetcode-cn.com/problems/subsets/
+3. 
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+const subsets = (nums) => {
+  const res = [];
+
+  const dfs = (index, list) => {
+    res.push(list.slice());
+    for (let i = index; i < nums.length; i++) {
+      list.push(nums[i]);
+      dfs(i + 1, list);
+      list.pop();
+    }
+  };
+
+  dfs(0, []);
+  return res;
+};
+
+1. 

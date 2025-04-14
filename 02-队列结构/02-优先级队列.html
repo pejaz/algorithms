@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    //封装优先级队列
+    function PriorityQueue (){
+      //在PriorityQueue重新创建一个内部类
+      function QueueElement(element,priority){
+        this.element = element
+        this.priority = priority
+      }
+      //封装属性
+      this.items = []
+      //实现插入方法
+      PriorityQueue.prototype.enqueue = function(element,priority){
+        //1.创建QueueElement对象
+        const queueElement = new QueueElement(element,priority)
+        //2.判断队列是否为空
+        if(this.items.length == 0){
+          this.items.push(queueElement)
+        }else{
+          let added = false
+          for(let i=0;i<this.items.length;i++){
+            if(queueElement.priority<this.items[i].priority){
+              this.items.splice(i,0,queueElement)
+              added = true
+              break
+            }
+          }
+          if(!added){
+            this.items.push(queueElement)
+          }
+        }
+      }
+      // 2. dequeue()
+        PriorityQueue.prototype.dequque = function () {
+          return this.items.shift();
+        };
+        // 3. front()
+        PriorityQueue.prototype.front = function () {
+          return this.items[0];
+        };
+        // 4. isEmpty()
+        PriorityQueue.prototype.isEmpty = function () {
+          return this.items.length === 0;
+        };
+        // 5. size()
+        PriorityQueue.prototype.size = function () {
+          return this.items.length;
+        };
+        //  6. toString()
+        PriorityQueue.prototype.toString = function () {
+          return this.items.map(item=>{
+            return `${item.element} - ${item.priority}  `
+          });
+        };
+    }
+
+    //测试代码
+    const pq = new PriorityQueue()
+    pq.enqueue('aaa',10)
+    pq.enqueue('bbb',50)
+    pq.enqueue('ccc',30)
+    pq.enqueue('ddd',100)
+    pq.enqueue('eee',5)
+    console.log(pq)
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//创建对象
+/*		var obj = new Object;*/
+		//向对象中添加属性
+/*		obj.name = "孙悟空";
+		obj.gender = "男";
+		obj.age = 123;
+		var obj2  = new Object();
+		obj2.na = "猪八戒";
+		obj2 = null;
+		obj.text  = obj2;
+		console.log(obj2.na);*/
+		/*var a = 123;
+		function fun(a){
+			alert(a);
+			a = 456;
+		}
+		fun(323);
+		alert(a);*/
+		function Person(name,age,gender){
+		this.name = name; //此时的this是新创建的对象
+		this.age = age;
+		this.gender = gender;
+		//    this,sayName = function(){
+		//        console.log(this.name);
+		//    };
+		//优化sayName方法
+		}
+		//优化sayName方法
+		Person.prototype.sayName = function(){
+			console.log(this.name);
+		};
+		//普通函数的调用方式
+		/*var per = Person();*/
+		//构造函数的调用方式，per1、per2、per3是同一类对象
+		var per1 = new Person("孙悟空",18,"男");  //this指向per1。
+		var per2 = new Person("猪八戒",19,"男");
+		var per3 = new Person("沙悟净",12,"男");
+		var per4 = new Person("白骨精",29,"男");
+		var per5 = new Person("玉兔精",16,"男");
+		var per6 = new Person("二郎神",27,"男");
+
+		var perArrary = [per1,per2,per3,per4,per5,per6];
+		function getAdult(arr){
+			var adult = [];
+			for (var i = 0; i < arr.length; i++) {
+				if(arr[i].age >= 18){
+					adult.push(arr[i]);
+				}
+			} 
+			return adult;
+		}
+		console.log(getAdult(perArrary));
+		perArrary[1].sayName();
+	/*		per1.sayName();  //undefined
+		per2.sayName(); //object Object*/
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
