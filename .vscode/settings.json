@@ -1,10 +1,20 @@
 {
-  "leetcode.defaultLanguage": "rust",
-  "leetcode.workspaceFolder": "/Users/peigoz/Zhong/algorithms/leet-code-rs",
-  "leetcode.filePath": {
-    "default": {
-      "folder": "src/solutions",
-      "filename": "${id}.${kebab-case-name}.${ext}"
-    }
-  },
+  // "leetcode.defaultLanguage": "rust",
+  // "leetcode.workspaceFolder": "/Users/peigoz/Zhong/algorithms/leet-code-rs",
+  // "leetcode.filePath": {
+  //   "default": {
+  //     "folder": "src/solutions",
+  //     "filename": "${id}_${kebab-case-name}.${ext}"
+  //   }
+  // },
+  // pucelle.run-on-save
+  "runOnSave.commands": [
+    {
+      // use gnu sed update lib.rs when add solutions (macOS)
+      "globMatch": "leet-code-rs/src/**/*.rs",
+      "command": "sh .vscode/onsave.sh ${fileBasename}",
+      "runIn": "backend",
+      "finishStatusMessage": "touched ${workspaceFolderBasename}"
+    },
+  ],
 }
