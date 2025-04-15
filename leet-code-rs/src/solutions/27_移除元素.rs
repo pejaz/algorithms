@@ -7,36 +7,20 @@
 // @lc code=start
 impl Solution {
     pub fn remove_element(nums: &mut Vec<i32>, val: i32) -> i32 {
-        if nums.len() <= 0 {
-            return 0;
-        }
-
-        let mut l = 0;
-        let mut r = nums.len() - 1;
-        while l <= r {
-            // 查找不等于 val 的下标
-            while r > l && nums[r] == val {
-                r -= 1;
-            }
-            // 查找等于 val 的下标
-            while l <= r && nums[l] != val {
-                l += 1
-            }
-
-            if l < r {
-                nums.swap(l, r);
-            }
-
-            if l == r {
-                break;
+        let mut slow = 0;
+        // i 即为快指针，slow 代表新数组的下标
+        for i in 0..nums.len(){
+            if nums[i] != val {
+                nums.swap(slow, i);
+                slow += 1;
             }
         }
 
-        if l == 0 {
+        if slow == 0 {
             nums.clear();
         }
 
-        return l as i32;
+        return slow as i32;
     }
 }
 // @lc code=end
