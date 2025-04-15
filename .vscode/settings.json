@@ -17,4 +17,8 @@
       "finishStatusMessage": "touched ${workspaceFolderBasename}"
     },
   ],
+  "cSpell.words": [
+    "leetcode",
+    "nums"
+  ],
 }
