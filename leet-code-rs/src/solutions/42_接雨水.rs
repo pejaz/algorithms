@@ -31,3 +31,5 @@ impl Solution {
     }
 }
 // @lc code=end
+#[allow(unused)]
+struct Solution;
