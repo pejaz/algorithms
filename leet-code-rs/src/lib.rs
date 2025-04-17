@@ -1,8 +1,8 @@
 // src/lib.rs
 
-const CURRENT: &str = "209_长度最小的子数组.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "59_螺旋矩阵-ii.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!(pub "src/solutions");
+    automod::dir!("src/solutions");
 }
 mod sort;
