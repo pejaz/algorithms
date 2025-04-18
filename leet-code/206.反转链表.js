@@ -18,13 +18,21 @@
  */
 
 var reverseList = function (head) {
-  function reverse (cur, pre) {
-    if (cur === null) return pre
-    const temp = cur.next
-    cur.next = pre
-    return reverse(temp, cur)
+  if (!head) return head
+
+  let pre = null;
+  let next = head;
+  while (next) {
+    const temp = next.next
+    next.next = pre
+    pre = next
+    next = temp
   }
-  return reverse(head, null)
+  return pre
 };
 // @lc code=end
 
+
+// @after-stub-for-debug-begin
+module.exports = reverseList;
+// @after-stub-for-debug-end

@@ -1,8 +1,8 @@
 // src/lib.rs
 
-const CURRENT: &str = "203_移除链表元素.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "206_反转链表.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!(pub "src/solutions");
+    automod::dir!("src/solutions");
 }
 mod sort;
