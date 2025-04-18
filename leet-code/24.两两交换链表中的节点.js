@@ -21,19 +21,24 @@ var swapPairs = function(head) {
   let cur = dummyHead
   while(cur.next && cur.next.next){
     // 1号节点
-    const temp1 = cur.next
-    // 3号节点
-    const temp2 = cur.next.next.next
+    const pre = cur.next
+    // 2号节点，
+    const next = cur.next.next
+    // 3 号节点
+    const temp = next.next
 
     // cur => 2
-    cur.next = cur.next.next
-    // 2 => 1,翻转
-    cur.next.next = temp1
-    // 1 => 3, 下一个翻转
-    temp1.next = temp2
+    cur.next = next
+    // 翻转 1 和 2 号节点
+    // 2 => 1,
+    next.next = pre
+    // 1 => 3,
+    pre.next = temp
 
-    cur = cur.next.next
+    // 新的cur -> 1,cur 的后面两个翻转，即翻转 4 和 3
+    cur = pre
   }
+
   return dummyHead.next
 };
 // @lc code=end

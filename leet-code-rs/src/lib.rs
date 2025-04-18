@@ -1,8 +1,8 @@
 // src/lib.rs
 
-const CURRENT: &str = "206_反转链表.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "24_两两交换链表中的节点.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!("src/solutions");
+    automod::dir!(pub "src/solutions");
 }
 mod sort;
