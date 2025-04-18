@@ -21,4 +21,7 @@
     "leetcode",
     "nums"
   ],
+  "lldb.showDisassembly": "auto",
+  "lldb.dereferencePointers": true,
+  "lldb.consoleMode": "commands",
 }

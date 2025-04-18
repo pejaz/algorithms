@@ -27,13 +27,15 @@ var removeNthFromEnd = function (head, n) {
   }
 
   // 让慢指针和快指针同步向前，
-  // 因为要操作前一个节点，所以 fast 走到最后一个就可以了
+  // 因为要操作前一个节点，所以 fast 走到最后一个就可以了,不用走到null
   while (fast && fast.next) {
     fast = fast.next;
     slow = slow.next;
   }
+
   // 此时 slow 为删除的前置节点，slow.next 就是倒数第 n 个节点，删除它
   slow.next = slow.next.next;
+
   return dummy.next;
 };
 // @lc code=end

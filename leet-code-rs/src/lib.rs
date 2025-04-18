@@ -1,8 +1,8 @@
 // src/lib.rs
 
-const CURRENT: &str = "19_删除链表的倒数第-n-个结点.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "242_有效的字母异位词.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!("src/solutions");
+    automod::dir!(pub "src/solutions");
 }
 mod sort;
