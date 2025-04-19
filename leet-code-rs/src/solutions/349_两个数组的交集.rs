@@ -16,6 +16,7 @@ impl Solution {
         //     .collect()
         let mut st = nums1.into_iter().collect::<HashSet<_>>();
         let mut ans = vec![];
+
         for x in nums2 {
             if st.remove(&x) {
                 // x 在 st 中

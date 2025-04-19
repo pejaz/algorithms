@@ -7,6 +7,7 @@
 // @lc code=start
 impl Solution {
     pub fn is_anagram(s: String, t: String) -> bool {
+        // 用数组下标做哈希表
         let mut cnt = [0; 26];
         for c in s.bytes() {
             cnt[(c - b'a') as usize] += 1;
