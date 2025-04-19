@@ -25,6 +25,7 @@ var reverseStr = function (s, k) {
     if (i + k <= resArr.length) {
       reverse(resArr, i, i + k)
     } else {
+      // 最后剩余字符小于 k 个，直接翻转剩余字符
       reverse(resArr, i, resArr.length)
     }
   }
