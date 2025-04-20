@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+#[allow(unused)]
 impl Solution {
     pub fn is_anagram(s: String, t: String) -> bool {
         // 用数组下标做哈希表
@@ -25,6 +26,7 @@ struct Solution;
 
 #[cfg(test)]
 mod test {
+    #[allow(unused)]
     use super::*;
 
     #[test]

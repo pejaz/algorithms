@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+#[allow(unused)]
 impl Solution {
     pub fn trap(height: Vec<i32>) -> i32 {
         let mut stack = vec![];

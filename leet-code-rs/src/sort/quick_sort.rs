@@ -1,3 +1,4 @@
+#[allow(unused)]
 fn quick_sort(nums: &mut Vec<i32>, left: usize, right: usize) {
     if left >= right {
         return;

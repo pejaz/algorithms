@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+#[allow(unused)]
 impl Solution {
     pub fn reverse_str(mut s: String, k: i32) -> String {
         let s_bytes = unsafe { s.as_bytes_mut() };
@@ -36,6 +37,7 @@ struct Solution;
 
 #[cfg(test)]
 mod test {
+    #[allow(unused)]
     use super::*;
 
     #[test]

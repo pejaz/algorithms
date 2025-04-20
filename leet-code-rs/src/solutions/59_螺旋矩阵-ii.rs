@@ -3,7 +3,6 @@
  *
  * [59] 螺旋矩阵 II
  */
-
 // @lc code=start
 enum Direction {
     TOP,
@@ -11,6 +10,7 @@ enum Direction {
     BOTTOM,
     LEFT,
 }
+#[allow(unused)]
 impl Solution {
     pub fn generate_matrix(n: i32) -> Vec<Vec<i32>> {
         let mut res = vec![vec![0; n as usize]; n as usize];

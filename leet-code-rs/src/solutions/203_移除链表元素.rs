@@ -11,7 +11,6 @@ pub struct ListNode {
 }
 
 impl ListNode {
-    #[inline]
     fn new(val: i32) -> Self {
         ListNode { next: None, val }
     }
@@ -30,12 +29,13 @@ impl ListNode {
 //         ListNode { next: None, val }
 //     }
 // }
+#[allow(unused)]
 impl Solution {
     pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
-        let mut dummyHead = Box::new(ListNode::new(0));
-        dummyHead.next = head;
+        let mut dummy_head = Box::new(ListNode::new(0));
+        dummy_head.next = head;
 
-        let mut cur = dummyHead.as_mut();
+        let mut cur = dummy_head.as_mut();
         while let Some(next) = cur.next.take() {
             if next.val == val {
                 cur.next = next.next;
@@ -46,7 +46,7 @@ impl Solution {
             }
         }
 
-        return dummyHead.next;
+        return dummy_head.next;
     }
 }
 // @lc code=end
@@ -56,6 +56,7 @@ struct Solution;
 
 #[cfg(test)]
 mod test {
+    #[allow(unused)]
     use super::*;
 
     #[test]

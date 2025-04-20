@@ -3,6 +3,7 @@
  *
  * [206] 反转链表
  */
+#[allow(unused)]
 pub struct ListNode {
     pub val: i32,
     pub next: Option<Box<ListNode>>,
@@ -24,6 +25,7 @@ pub struct ListNode {
 //     }
 //   }
 // }
+#[allow(unused)]
 impl Solution {
     pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut pre: Option<Box<ListNode>> = None;
@@ -45,6 +47,7 @@ struct Solution;
 
 #[cfg(test)]
 mod test {
+    #[allow(unused)]
     use super::*;
 
     #[test]

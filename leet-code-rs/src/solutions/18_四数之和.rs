@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+#[allow(unused)]
 impl Solution {
     pub fn four_sum(mut nums: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
         if nums.len() < 4 {

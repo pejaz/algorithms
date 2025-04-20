@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+#[allow(unused)]
 impl Solution {
     pub fn reverse_string(s: &mut Vec<char>) {
         let mut l = 0;
@@ -24,6 +25,7 @@ struct Solution;
 
 #[cfg(test)]
 mod test {
+    #[allow(unused)]
     use super::*;
 
     #[test]

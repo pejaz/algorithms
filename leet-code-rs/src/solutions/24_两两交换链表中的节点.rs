@@ -3,6 +3,7 @@
  *
  * [24] 两两交换链表中的节点
  */
+#[allow(unused)]
 pub struct ListNode {
     pub val: i32,
     pub next: Option<Box<ListNode>>,
@@ -30,6 +31,7 @@ impl ListNode {
 //     }
 //   }
 // }
+#[allow(unused)]
 impl Solution {
     pub fn swap_pairs(mut head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut dummy = Box::new(ListNode::new(0));
@@ -68,6 +70,7 @@ struct Solution;
 
 #[cfg(test)]
 mod test {
+    #[allow(unused)]
     use super::*;
 
     #[test]

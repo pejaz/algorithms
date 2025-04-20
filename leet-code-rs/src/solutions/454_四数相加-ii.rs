@@ -6,6 +6,7 @@
 
 // @lc code=start
 use std::collections::HashMap;
+#[allow(unused)]
 impl Solution {
     pub fn four_sum_count(
         nums1: Vec<i32>,

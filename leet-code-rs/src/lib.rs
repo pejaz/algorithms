@@ -1,8 +1,8 @@
 // src/lib.rs
-
-const CURRENT: &str = "541_反转字符串-ii.rs"; // trigger rust-analyser recheckstr
+#[allow(unused)]
+const CURRENT: &str = "151_反转字符串中的单词.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!("src/solutions");
+    automod::dir!(pub "src/solutions");
 }
 mod sort;

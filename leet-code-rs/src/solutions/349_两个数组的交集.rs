@@ -6,6 +6,7 @@
 
 // @lc code=start
 use std::collections::HashSet;
+#[allow(unused)]
 impl Solution {
     pub fn intersection(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
         // nums1
@@ -33,6 +34,7 @@ struct Solution;
 
 #[cfg(test)]
 mod test {
+    #[allow(unused)]
     use super::*;
 
     #[test]

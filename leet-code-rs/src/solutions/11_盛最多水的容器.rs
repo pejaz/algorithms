@@ -5,6 +5,7 @@
  */
 // @lc code=start
 use std::cmp::{max, min};
+#[allow(unused)]
 impl Solution {
     pub fn max_area(height: Vec<i32>) -> i32 {
         let mut res = 0;

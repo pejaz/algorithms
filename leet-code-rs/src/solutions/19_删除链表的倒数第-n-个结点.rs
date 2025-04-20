@@ -3,6 +3,7 @@
  *
  * [19] 删除链表的倒数第 N 个结点
  */
+#[allow(unused)]
 pub struct ListNode {
     pub val: i32,
     pub next: Option<Box<ListNode>>,
@@ -24,8 +25,9 @@ pub struct ListNode {
 //     }
 //   }
 // }
+#[allow(unused)]
 impl Solution {
-    pub fn remove_nth_from_end(head: Option<Box<ListNode>>, mut n: i32) -> Option<Box<ListNode>> {
+    pub fn remove_nth_from_end(head: Option<Box<ListNode>>,  n: i32) -> Option<Box<ListNode>> {
         let dummy = ListNode { val: 0, next: head };
         let mut slow = &dummy;
         let mut fast = &dummy;
@@ -55,6 +57,7 @@ struct Solution;
 
 #[cfg(test)]
 mod test {
+    #[allow(unused)]
     use super::*;
 
     #[test]
