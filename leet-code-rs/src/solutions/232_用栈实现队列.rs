@@ -6,34 +6,48 @@
 
 // @lc code=start
 struct MyQueue {
-
+    stack: Vec<i32>,
+    out: Vec<i32>,
 }
 
-
-/** 
+/**
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyQueue {
-
     fn new() -> Self {
-        
+        MyQueue {
+            stack: vec![],
+            out: vec![],
+        }
     }
-    
-    fn push(&self, x: i32) {
-        
+
+    fn push(&mut self, x: i32) {
+        self.stack.push(x)
     }
-    
-    fn pop(&self) -> i32 {
+
+    fn pop(&mut self) -> i32 {
+        if self.out.is_empty() {
+            while !self.stack.is_empty() {
+                self.out.push(self.stack.pop().unwrap())
+            }
+        }
         
+        self.out.pop().unwrap()
     }
-    
-    fn peek(&self) -> i32 {
-        
+
+    fn peek(&mut self) -> i32 {
+        if self.out.is_empty() {
+            while !self.stack.is_empty() {
+                self.out.push(self.stack.pop().unwrap())
+            }
+        }
+
+        *self.out.last().unwrap()
     }
-    
+
     fn empty(&self) -> bool {
-        
+        self.stack.is_empty() && self.out.is_empty()
     }
 }
 
@@ -48,8 +62,6 @@ impl MyQueue {
 // @lc code=end
 
 #[allow(unused)]
-
-
 #[allow(unused)]
 struct Solution;
 
