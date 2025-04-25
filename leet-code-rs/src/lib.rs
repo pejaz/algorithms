@@ -1,6 +1,6 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "239_滑动窗口最大值.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "347_前-k-个高频元素_heap.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
     automod::dir!("src/solutions");
