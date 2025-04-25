@@ -1,8 +1,8 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "150_逆波兰表达式求值.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "239_滑动窗口最大值.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!(pub "src/solutions");
+    automod::dir!("src/solutions");
 }
 mod sort;
