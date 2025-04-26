@@ -18,7 +18,17 @@
  * @return {TreeNode}
  */
 var invertTree = function(root) {
+  if (!root) return null
 
+  let temp = root.left
+  root.left = invertTree(root.right)
+  root.right = invertTree(temp)
+
+  return root
 };
 // @lc code=end
 
+
+// @after-stub-for-debug-begin
+module.exports = invertTree;
+// @after-stub-for-debug-end
