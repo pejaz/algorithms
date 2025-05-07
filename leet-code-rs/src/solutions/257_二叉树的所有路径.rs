@@ -66,6 +66,16 @@ impl Solution {
 
                 let right = &node.right;
                 get_paths(right, path.clone(), res);
+
+                // 回溯解法
+                // if node.left.is_some() {
+                //     get_paths(left, path, res);
+                //     path.pop() // 有值的时候才回退，因为有值才会 push 进去左节点
+                // }
+                // if node.right.is_some() {
+                //     get_paths(right, path, res);
+                //     path.pop() // 有值的时候才回退，因为有值才会 push 进去右节点
+                // }
             }
         }
 
