@@ -54,26 +54,30 @@ impl Solution {
         let val = postorder.pop()?;
         let i_idx = inorder.iter().position(|&n| n == val)?;
         // 根节点前面为左子树的 inorder，后面为右子树的 inorder
-        let (l_inorder, r_inorder) = inorder.split_at(i_idx);
-        let (_, r_inorder) = r_inorder.split_at(1);
+        let (l_inorder,mut r_inorder) = inorder.split_at(i_idx);
+        r_inorder = &r_inorder[1..]; // 移出中序的根节点
 
-        // 中序遍历的最后一个为左子树的最后一个节点。
-        let l_order_set = l_inorder.iter().collect::<HashSet<_>>();
-        let (l_postorder, r_postorder, _) = postorder.iter().fold(
-            (vec![], vec![], l_order_set),
-            |(mut l_post, mut r_post, l_set), n| {
-                if l_set.contains(n) {
-                    l_post.push(*n);
-                } else {
-                    r_post.push(*n);
-                }
+        // // 中序遍历的最后一个为左子树的最后一个节点。
+        // let l_order_set = l_inorder.iter().collect::<HashSet<_>>();
+        // let (l_postorder, r_postorder, _) = postorder.iter().fold(
+        //     (vec![], vec![], l_order_set),
+        //     |(mut l_post, mut r_post, l_set), n| {
+        //         if l_set.contains(n) {
+        //             l_post.push(*n);
+        //         } else {
+        //             r_post.push(*n);
+        //         }
 
-                (l_post, r_post, l_set)
-            },
-        );
+        //         (l_post, r_post, l_set)
+        //     },
+        // );
+        
+        // 后序左右中，左边节点数量和中序是一样的。所以也可以直接用 i_idx切割
+        let (l_postorder, r_postorder) = postorder.split_at(i_idx);
+
         let mut node = TreeNode::new(val);
-        node.left = Self::build_tree(l_inorder.to_vec(), l_postorder);
-        node.right = Self::build_tree(r_inorder.to_vec(), r_postorder);
+        node.left = Self::build_tree(l_inorder.to_vec(), l_postorder.to_vec());
+        node.right = Self::build_tree(r_inorder.to_vec(), r_postorder.to_vec());
 
         return Some(Rc::new(RefCell::new(node)));
     }
