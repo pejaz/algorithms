@@ -1,8 +1,8 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "404_左叶子之和.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "106_从中序与后序遍历序列构造二叉树.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!("src/solutions");
+    automod::dir!(pub "src/solutions");
 }
 mod sort;
