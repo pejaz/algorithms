@@ -84,6 +84,7 @@ impl Solution {
         return is_valid(root, &mut pre);
     }
     // 解法二：递归过程不断更新上下边界，直接判断上一个节点是否满足
+    // 这里初始化不能传 i32::MAX 和 MIN，有可能会相等，初始化可以传 None
     pub fn helper(root: Option<Rc<RefCell<TreeNode>>>, lower: i32, upper: i32) -> bool {
         match root {
             Some(node) => {
