@@ -1,8 +1,8 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "530_二叉搜索树的最小绝对差.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "235_二叉搜索树的最近公共祖先.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!("src/solutions");
+    automod::dir!(pub "src/solutions");
 }
 mod sort;

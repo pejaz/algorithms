@@ -45,7 +45,8 @@ use std::rc::Rc;
 #[allow(unused)]
 impl Solution {
     pub fn get_minimum_difference(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        fn minimum_travse(
+        // 中序遍历
+        fn inorder_traversal(
             root: &Option<Rc<RefCell<TreeNode>>>,
             pre: &mut Option<i32>,
             min_num: &mut i32,
@@ -53,20 +54,20 @@ impl Solution {
             if let Some(node) = root {
                 let node = node.borrow();
 
-                minimum_travse(&node.left, pre, min_num);
+                inorder_traversal(&node.left, pre, min_num);
 
                 if let Some(pre) = pre {
                     *min_num = *min_num.min(&mut (node.val - *pre));
                 }
                 *pre = Some(node.val);
 
-                minimum_travse(&node.right, pre, min_num);
+                inorder_traversal(&node.right, pre, min_num);
             }
         }
 
         let mut pre = None;
         let mut min_num = i32::MAX;
-        minimum_travse(&root, &mut pre, &mut min_num);
+        inorder_traversal(&root, &mut pre, &mut min_num);
 
         return min_num;
     }
