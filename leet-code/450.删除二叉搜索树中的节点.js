@@ -37,21 +37,30 @@ var deleteNode = function (root, key) {
     }
     // 左右都存在，找到右子树中最接近root的(root.right中的左子树中最大的)
     // 替换当前节点
-    let parentNode = root
+    // let parentNode = root
+    // let node = root.right
+    // while (node.left) {
+    //   parentNode = node
+    //   node = node.left
+    // }
+
+    // if (node === root.right) {
+    //   // root.right 就是叶子节点，没有进入循环
+    //   node.left = root.left
+    // } else {
+    //   // node.left为null，但是node.right可能有节点，直接挂在parentNode的left上
+    //   parentNode.left = node.right
+    //   node.left = root.left
+    //   node.right = root.right
+    // }
     let node = root.right
     while (node.left) {
-      parentNode = node
       node = node.left
     }
-    if (node === root.right) {
-      node.left = root.left
-    } else {
-      // node.left为null，但是node.right可能有节点，直接挂在parentNode的left上
-      parentNode.left = node.right
-      node.left = root.left
-      node.right = root.right
-    }
-    return node
+
+    node.left = root.left
+
+    return root.right
   }
 
   // 左
