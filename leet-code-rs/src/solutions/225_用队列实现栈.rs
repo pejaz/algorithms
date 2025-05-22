@@ -14,6 +14,7 @@ struct MyStack {
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
  */
+#[allow(unused)]
 impl MyStack {
     fn new() -> Self {
         Self {
