@@ -1,8 +1,8 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "406_根据身高重建队列.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "452_用最少数量的箭引爆气球.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!(pub "src/solutions");
+    automod::dir!("src/solutions");
 }
 mod sort;
