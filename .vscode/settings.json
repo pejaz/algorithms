@@ -24,4 +24,5 @@
   "lldb.showDisassembly": "auto",
   "lldb.dereferencePointers": true,
   "lldb.consoleMode": "commands",
+  "commentTranslate.multiLineMerge": false,
 }
