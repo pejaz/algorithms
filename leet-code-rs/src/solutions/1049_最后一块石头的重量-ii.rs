@@ -11,8 +11,8 @@ impl Solution {
     // 解题思路：
     //     粉碎剩余最小重量，可以转化为： 石头总重量 weight 分为 2 半，
     //     此时有一个重量为 weight/2 的背包，物品对应各个石头，物品重量等于价值，物品只能使用 1 次
-    //     尽可能的装满背包重量，此时每个背包剩余 weight/2 - dp[weight/2] 重量。
-    //     那么剩余的石头重量就等于  weight/2 - dp[weight/2] * 2 = weight - dp[weight/2] * 2。
+    //     尽可能的装满背包重量，此时每个背包重量为dp[weight/2]，那么另一堆石头重量则为 weight - dp[weight/2]。
+    //     那么剩余的石头重量就等于另一堆重量 - 背包重量：（weight - dp[weight/2]） - dp[weight/2] = weight - dp[weight/2] * 2。
     pub fn last_stone_weight_ii(stones: Vec<i32>) -> i32 {
         let weight: i32 = stones.iter().sum();
 
