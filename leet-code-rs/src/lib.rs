@@ -1,8 +1,8 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "494_目标和.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "474_一和零.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!(pub "src/solutions");
+    automod::dir!("src/solutions");
 }
 mod sort;
