@@ -16,9 +16,7 @@ var numSquares = function (n) {
     // 物品
     const num = i ** 2
     for (let j = num; j <= n; j += 1) {
-      if (j >= num) {
-        dp[j] = Math.min(dp[j], dp[j - num] + 1)
-      }
+      dp[j] = Math.min(dp[j], dp[j - num] + 1)
     }
   }
   return dp[n]
