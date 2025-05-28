@@ -25,3 +25,18 @@ impl Solution {
 // @lc code=end
 #[allow(unused)]
 struct Solution;
+
+#[allow(unused)]
+struct Solution;
+
+#[cfg(test)]
+mod test {
+    #[allow(unused)]
+    use super::*;
+
+    #[test]
+    fn test_max_area() {
+        //assert_eq!(Solution::max_area(vec![]),[]);
+        assert!(true)
+    }
+}

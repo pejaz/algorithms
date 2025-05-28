@@ -34,3 +34,18 @@ impl Solution {
 // @lc code=end
 #[allow(unused)]
 struct Solution;
+
+#[allow(unused)]
+struct Solution;
+
+#[cfg(test)]
+mod test {
+    #[allow(unused)]
+    use super::*;
+
+    #[test]
+    fn test_trap() {
+        //assert_eq!(Solution::trap(vec![]),[]);
+        assert!(true)
+    }
+}
