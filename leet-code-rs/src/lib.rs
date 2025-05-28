@@ -1,6 +1,6 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "279_完全平方数.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "139_单词拆分.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
     automod::dir!("src/solutions");

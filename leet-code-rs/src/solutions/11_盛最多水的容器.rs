@@ -23,8 +23,6 @@ impl Solution {
     }
 }
 // @lc code=end
-#[allow(unused)]
-struct Solution;
 
 #[allow(unused)]
 struct Solution;

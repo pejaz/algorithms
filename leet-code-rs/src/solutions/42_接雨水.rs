@@ -35,9 +35,6 @@ impl Solution {
 #[allow(unused)]
 struct Solution;
 
-#[allow(unused)]
-struct Solution;
-
 #[cfg(test)]
 mod test {
     #[allow(unused)]
