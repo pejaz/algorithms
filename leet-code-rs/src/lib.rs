@@ -1,8 +1,8 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "123_买卖股票的最佳时机-iii.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "309_买卖股票的最佳时机含冷冻期.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!("src/solutions");
+    automod::dir!(pub "src/solutions");
 }
 mod sort;
