@@ -1,8 +1,8 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "674_最长连续递增序列.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "718_最长重复子数组.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!("src/solutions");
+    automod::dir!(pub "src/solutions");
 }
 mod sort;
