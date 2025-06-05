@@ -1,8 +1,8 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "583_两个字符串的删除操作.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "72_编辑距离.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!("src/solutions");
+    automod::dir!(pub "src/solutions");
 }
 mod sort;
