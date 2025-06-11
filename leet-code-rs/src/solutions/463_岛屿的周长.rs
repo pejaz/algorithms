@@ -8,7 +8,10 @@
 
 #[allow(unused)]
 impl Solution {
-    // 不需要DFS 和 BFS，直接根据陆地周围情况，如果是海洋或者边界则周长加一
+    // 思路一：根据 DFS 遍历岛屿，然后每个岛屿面积代表多少个陆地，
+    // 此时每个陆地理论周长为 4，接着每两个陆地挨着就减去 2(a和b相连，则相连的那条边,a和b都要减去 1，即一共减 2)
+    //   count* 4 - connect * 2
+    // 思路二：不需要DFS 和 BFS，直接根据陆地周围情况，如果是海洋或者边界则周长加一
     pub fn island_perimeter(grid: Vec<Vec<i32>>) -> i32 {
         let direction = [(0, -1), (0, 1), (-1, 0), (1, 0)];
 
