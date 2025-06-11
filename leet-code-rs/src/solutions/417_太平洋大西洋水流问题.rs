@@ -23,8 +23,10 @@ impl Solution {
             direction: &[(i32, i32); 4],
         ) {
             if ocean[x][y] == true {
+                // 避免重复访问
                 return;
             } else {
+                // 代表节点能到达x,y 位置
                 ocean[x][y] = true;
             }
 
