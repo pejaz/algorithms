@@ -1,8 +1,8 @@
 // src/lib.rs
 #[allow(unused)]
-const CURRENT: &str = "695_岛屿的最大面积.rs"; // trigger rust-analyser recheckstr
+const CURRENT: &str = "417_太平洋大西洋水流问题.rs"; // trigger rust-analyser recheckstr
 
 pub mod solutions {
-    automod::dir!(pub "src/solutions");
+    automod::dir!("src/solutions");
 }
 mod sort;
