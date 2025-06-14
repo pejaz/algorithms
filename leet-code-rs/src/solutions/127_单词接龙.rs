@@ -12,7 +12,7 @@ use std::collections::{HashMap, HashSet, VecDeque};
 impl Solution {
     // 解题思路：
     /**
-     * 将单词列表构建成图，转化为从 beginword 到 endword 的最短路径问题，在通过 BFS 搜索图
+     * 将单词列表构建成图，转化为从 beginword 到 endword 的最短路径问题，再通过 BFS 搜索图
      */
     pub fn ladder_length(begin_word: String, end_word: String, word_list: Vec<String>) -> i32 {
         let mut word_set: HashSet<String> = word_list.into_iter().collect();
