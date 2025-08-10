@@ -46,6 +46,7 @@ use std::rc::Rc;
 impl Solution {
     pub fn min_camera_cover(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         //  存在孩子为 0 的需要加监控
+        // （0: 无覆盖，父亲需加摄像头；1: 有覆盖；2: 装摄像头节点）
         fn traverse(node: &Option<Rc<RefCell<TreeNode>>>, camera: &mut i32) -> i32 {
             if let Some(node) = node {
                 let node = node.borrow();

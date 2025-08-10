@@ -1,4 +1,4 @@
-/*
+ /*
  * @lc app=leetcode.cn id=435 lang=rust
  *
  * [435] 无重叠区间
@@ -14,7 +14,7 @@ impl Solution {
         let mut res = 0;
         for i in 1..intervals.len() {
             if intervals[i][0] < intervals[i - 1][1] {
-                // 有交集
+                // 下一个左边界大于上一个的右边界，有交集
                 res += 1;
                 // 更新右区间
                 intervals[i][1] = intervals[i][1].min(intervals[i - 1][1]);

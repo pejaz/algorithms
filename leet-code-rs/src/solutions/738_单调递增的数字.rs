@@ -11,7 +11,7 @@ impl Solution {
     pub fn monotone_increasing_digits(n: i32) -> i32 {
         let mut str = n.to_string().chars().collect::<Vec<char>>();
 
-        // 从右到左匹配，如果发现前一位比后一位小，则前一位数字-1，并把后面变为 9。否则保持原来数字
+        // 从右到左匹配，如果发现左边比右边大，则左边数字-1，并把后面位开始位置 变为 9。否则保持原来数字
 
         let mut idx = None;
         for i in (0..str.len() - 1).rev() {
