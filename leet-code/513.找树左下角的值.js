@@ -47,3 +47,7 @@ var findBottomLeftValue = function (root) {
 };
 // @lc code=end
 
+
+// @after-stub-for-debug-begin
+module.exports = findBottomLeftValue;
+// @after-stub-for-debug-end

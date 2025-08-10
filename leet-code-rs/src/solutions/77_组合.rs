@@ -22,7 +22,7 @@ impl Solution {
             }
 
             // 方法二：水平方向上剪枝，即在 for 循环结束条件上判断
-            // 加入 n=4,k=3,cur=0 ，即最多遍历到 2（此时搜集 234）。
+            // 假如 n=4,k=3,cur=0 ，即最多遍历到 2（此时搜集 234）。
             let end = n - (k - cur.len()) as i32 + 1;
             for i in s..=end {
                 cur.push(i);

@@ -28,9 +28,9 @@ console.log(a) //1
 function edit1 (a) {
   a[0] = 0
 }
-let a = [1]
-edit(a)
-console.log(a[0]) //0
+let a1 = [1]
+edit(a1)
+console.log(a1[0]) //0
 
 const c = 1,
   d = 2

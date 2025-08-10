@@ -25,8 +25,8 @@ impl Solution {
             let mut set = HashSet::new();
             for i in 0..nums.len() {
                 // 这里 set 也可以用 used代替
-                // 先对 nums 排序，然后判断 i > 0 && nums[i] == nums[i-1] && used[i-1] ==0
-                // 代表同层相等，并且 used[i-1] == 0 代表当前不是在树枝递归上
+                // 先对 nums 排序，然后判断 i > 0 && nums[i] == nums[i-1] 代表同层相等，同时 used[i-1] != 1 代表当前不是在树枝递归上。
+                //   即 (i > 0 && nums[i] == nums[i - 1] && used[i - 1] == 0)
                 // if used[i] == 1 || (i > 0 && nums[i] == nums[i - 1] && used[i - 1] == 0) {
                 //     continue;
                 // };
