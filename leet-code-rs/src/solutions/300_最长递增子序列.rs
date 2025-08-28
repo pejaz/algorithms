@@ -1,4 +1,4 @@
-/*
+/* 🔖
  * @lc app=leetcode.cn id=300 lang=rust
  *
  * [300] 最长递增子序列

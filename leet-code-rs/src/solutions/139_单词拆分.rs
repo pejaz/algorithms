@@ -1,4 +1,4 @@
-/*
+/* 🔖
  * @lc app=leetcode.cn id=139 lang=rust
  *
  * [139] 单词拆分

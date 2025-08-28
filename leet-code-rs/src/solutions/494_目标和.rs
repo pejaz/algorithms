@@ -1,4 +1,4 @@
-/*
+/* 🔖
  * @lc app=leetcode.cn id=494 lang=rust
  *
  * [494] 目标和

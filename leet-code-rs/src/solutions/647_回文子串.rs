@@ -14,7 +14,7 @@ impl Solution {
      *  2. 递推公式 dp[i] = dp[i-1] + 以 i 结尾的回文字串
      *  3. 初始化：dp[0] = 1；
      *
-     * 可以单独用一个变量来做累加。利用 dp 来做缓存，防止重复比价。
+     * 可以单独用一个变量来做累加。利用 dp 来做缓存，防止重复比较（见动态规划）。
      */
     pub fn count_substrings(s: String) -> i32 {
         let s: Vec<char> = s.chars().collect();

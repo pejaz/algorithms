@@ -1,4 +1,4 @@
-/*
+/* 🔖
  * @lc app=leetcode.cn id=188 lang=rust
  *
  * [188] 买卖股票的最佳时机 IV
@@ -25,7 +25,7 @@
  *      profit = max(dp[i][2],dp[i][3])(不持有股票的现金一定比持有股票的现金多，这里第二次卖出已经包含第一次卖出了，也可以直接输出dp[i][3])
  * 3. 初始化：
  *    dp[0][0] = -prices[0];
- *    dp[0][1] = 0;
+ *    dp[0][1] = -prices[0] ;
  *    dp[0][2] = 0;
  *    dp[0][3] = 0;
  * 4. 遍历顺序：
@@ -50,6 +50,7 @@ impl Solution {
                 let k = k as usize;
                 // 第 j 次持有
                 if j == 0 {
+                    // 前面 i -1 天就第一次持有，或者今天第一次买入
                     dp[i][j] = dp[i - 1][j].max(-prices[i]);
                 } else {
                     dp[i][j] = dp[i - 1][j].max(dp[i - 1][j - 1 + k] - prices[i]);

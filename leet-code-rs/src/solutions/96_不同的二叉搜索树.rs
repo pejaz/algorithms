@@ -1,4 +1,4 @@
-/*
+/* 🔖
  * @lc app=leetcode.cn id=96 lang=rust
  *
  * [96] 不同的二叉搜索树

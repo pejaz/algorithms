@@ -1,4 +1,4 @@
-/*
+/* 🔖 
  * @lc app=leetcode.cn id=115 lang=rust
  *
  * [115] 不同的子序列
@@ -12,7 +12,11 @@ impl Solution {
      * 解题思路：本题是选和不选问题
      *  1. dp[i][j]: s 前 i 个元素和出现 t 前 j 个元素的个数
      *  2. 递推公式：
-     *     - s[i] == t[i]: dp[i+1][j+1] = dp[i][j+1]（只删除 i ） + dp[i][j](同时删除 i 和 j);
+     *     - s[i] == t[i]: dp[i+1][j+1] = dp[i][j](同时删除 i 和 j) + dp[i][j+1]（只删除 i ）;
+     *       - 相等时考虑用 si 和不用 si ⚠️ 
+     *       - 如果用 si，即从 s[0..i-1] 去找 t[0..i-1]（此时对应 dp[i-1][j-1]）
+     *       - 如果不用 si，即从 s[0..i-1] 重新去找 t[0..i]（此时对应 dp[i-1][j]）
+     *       - 所以 dp[i][j] = dp[i-1][j-1](用 s1) + dp[i-1][j](不用 si) 
      *     - s[i] != t[i]: dp[i+1][j+1] = dp[i][j+1]（t 不能删）
      *  3. 初始化：根据 dp 含义：dp[i][0] = 1
      *
@@ -51,6 +55,10 @@ struct Solution;
 mod test {
     #[allow(unused)]
     use super::*;
+    // * 比如在abcabc里找多少个abc，假设现在是匹配到了i=5 j=2, 要用5号索引这个c，只需要去前面找ab
+    // * 如何表示去前面找ab呢？就是dp[i-1][j-1],表示去abcab里找ab的意思
+    // * 也就是说abcab里找ab，有多少个ab，那么abcabc里就有多少个abc
+    // * 还有一种情况，你不用这个c，那你得去前面找abc，从abcab里找abc，表示为dp[i-1][j]
     //  [  r  a  b  i
     // r [ 1, 0, 0, 0],
     // a [ 1, 1, 0, 0],

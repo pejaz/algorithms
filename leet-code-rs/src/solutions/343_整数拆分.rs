@@ -1,4 +1,4 @@
-/*
+/* 🔖
  * @lc app=leetcode.cn id=343 lang=rust
  *
  * [343] 整数拆分
